@@ -74,6 +74,7 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin,
         # self.clearGPIO()
         self.configureGPIO()
         self.updateOutputUI()
+        GPIO.setmode(GPIO.BOARD)
 
     #~~ Blueprintplugin mixin
     @octoprint.plugin.BlueprintPlugin.route("/setEnclosureTemperature", methods=["GET"])
