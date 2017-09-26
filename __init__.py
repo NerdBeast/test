@@ -341,19 +341,6 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin,
     def startGPIO(self):
         try:
             GPIO.setmode(GPIO.BOARD)
-'''             currentMode = GPIO.getmode()
-            setMode = GPIO.BOARD if self._settings.get(["useBoardPinNumber"]) else GPIO.BCM
-            if currentMode == None:
-                GPIO.setmode(setMode)
-                tempstr = "BOARD" if setMode == GPIO.BOARD else "BCM"
-                self._logger.info("Setting GPIO mode to %s",tempstr)
-            elif currentMode != setMode:
-                GPIO.setmode(currentMode)
-                tempstr = "BOARD" if currentMode == GPIO.BOARD else "BCM"
-                self._settings.set(["useBoardPinNumber"],True if currentMode == GPIO.BOARD else False)
-                warn_msg = "GPIO mode was configured before, GPIO mode will be forced to use: " + tempstr + " as pin numbers. Please update GPIO accordingly!"
-                self._logger.info(warn_msg)
-                self._plugin_manager.send_plugin_message(self._identifier,dict(isMsg=True,msg=warn_msg)) '''
             GPIO.setwarnings(False)
         except Exception as ex:
             template = "An exception of type {0} occurred on startGPIO. Arguments:\n{1!r}"
